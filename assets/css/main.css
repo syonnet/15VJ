@@ -755,7 +755,7 @@ input, select, textarea {
 				padding: 0.5em 0;
 			}
 
-				ul.alt li:first-child {
+				ul.alt li {
 					border-top: 0;
 					padding-top: 0;
 				}
@@ -1307,7 +1307,7 @@ input, select, textarea {
 		}
 
 			#header .logo .icon:before {
-				font-size: 2rem;
+				font-size: 2em;
 			}
 
 		#header .content {
@@ -1740,7 +1740,7 @@ input, select, textarea {
 }
 
 .itinerary-card {
-    background-color: #F8F8F8;
+    background-color: #a3a8a8d2;
     border-radius: 9999px; /* rounded-full */
     padding: 2.25rem; /* p-9 */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
@@ -1760,7 +1760,6 @@ input, select, textarea {
 }
 
 .itinerary-card .icon {
-    font-size: 2em;
     color: #0077b6;
 }
 
@@ -1793,3 +1792,85 @@ input, select, textarea {
         font-size: 1.2em;
     }
 }
+
+/* --- Álbum invitación --- */
+.album-invite {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #ffd1dc 0%, #ffb7c5 100%);
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  color: #1b1f22;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.album-invite .icon {
+  margin-right: 0.5rem;
+  animation: flash 1.5s infinite ease-in-out;
+  font-size: 2.5rem;
+}
+#album-link {
+  font-weight: bold;
+  color: #0077b6;
+  position: relative;
+  z-index: 1;
+}
+#album-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3px;
+  background: #0077b6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+#album-link:hover::after {
+  transform: scaleX(1);
+}
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* --- Playlist Colaborativa --- */
+#contact .playlist-desc {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1b1f22;
+  background: linear-gradient(135deg, #ffe29f 0%, #ffb7b7 100%);
+  padding: 0.8rem 1.2rem;
+  border-radius: 1rem;
+  display: inline-block;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+.spotify-wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+  border: 4px solid #1DB954;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+.spotify-wrapper:hover {
+  transform: scale(1.03);
+}
+@media screen and (max-width: 768px) {
+  .spotify-wrapper {
+    border-width: 3px;
+  }
+}
+
+/* -- Spotify Wrapper Color Update -- */
+.spotify-wrapper {
+  border-color: #ff6f91; /* color vibrante */
+  background: linear-gradient(135deg, rgba(255,111,145,0.15) 0%, rgba(255,111,145,0.05) 100%);
+}
+
+
