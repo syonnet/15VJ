@@ -544,10 +544,32 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			});
 
 			// Enviar mensaje al iframe para habilitar eventos (funciona con embeds más nuevos)
-			spotifyFrame.contentWindow.postMessage(JSON.stringify({
-				type: 'subscribe',
-				channel: 'playback_update'
-			}), '*');
+            spotifyFrame.contentWindow.postMessage(JSON.stringify({
+                type: 'subscribe',
+                channel: 'playback_update'
+            }), '*');
+
+            // ----------------------------
+            // OBSERVAR VISIBILIDAD DEL ARTÍCULO CONTACT
+            const contactSection = document.querySelector('#contact');
+            if (contactSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            // Fuera de vista: pausar Spotify y reanudar música de fondo
+                            resumeBgMusic();
+                            spotifyFrame.contentWindow.postMessage(JSON.stringify({ type: 'pause' }), '*');
+                        }
+                    });
+                }, { threshold: 0.2 }); // 20% visible
+                observer.observe(contactSection);
+            }
+
+            function resumeBgMusic() {
+                if (audio && audio.paused) {
+                    audio.play().catch(()=>{});
+                }
+            }
 		});
 	</script>
 </body>
